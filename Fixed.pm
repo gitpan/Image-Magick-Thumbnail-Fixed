@@ -6,7 +6,7 @@ use warnings;
 use Image::Magick;
 use Carp;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
   my $class = shift;  
@@ -85,18 +85,18 @@ sub thumbnail {
     # source image dimensions  
     my ($o_width, $o_height) = $im->Get('width','height');
   
-  	warn "Source dimensions: $o_width x $o_height.\n" if $self->{debug} == 1;
+  	#warn "Source dimensions: $o_width x $o_height.\n" if $self->{debug} == 1;
   
     warn "Source image height <= 0 ($o_height)." and return undef if $o_height <= 0;
     warn "Source image width <= 0 ($o_width)." and return undef if $o_width  <= 0;
     
     # calculate image dimensions required to fit onto thumbnail
     my ($t_width, $t_height, $ratio);
-    # wider than tall
+    # wider than tall (seems to work...) needs testing
     if( $o_width > $o_height ){
       $ratio = $o_width / $o_height;
       $t_width = $width;    
-      $t_height = $t_width * $ratio;
+      $t_height = $width / $ratio;
   
       # still won't fit, find the smallest size.
       while($t_height > $height){
@@ -108,7 +108,7 @@ sub thumbnail {
     elsif( $o_height > $o_width ){
       $ratio = $o_height / $o_width;  
       $t_height = $height;
-      $t_width = $width / $ratio;
+      $t_width = $height / $ratio;
   
       # still won't fit, find the smallest size.
       while($t_width > $width){
@@ -266,6 +266,7 @@ None by default.
 =head1 VERSION HISTORY
 
 Version 0.01 (18 August 2004): Initial Revision
+Version 0.02 (31 August 2004): Perl 5.6.1 support, fixed height/width calculations that were broken in certain situations.
 
 =head1 SEE ALSO
 

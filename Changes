@@ -1,6 +1,9 @@
 Revision history for Perl extension Image::Magick::Thumbnail::Fixed.
 
 0.01  Wed Aug 18 15:06:06 2004
-	- original version; created by h2xs 1.22 with options
-		-AX -n Image::Magick::Thumbnail::Fixed
+	- original version
+0.02  Tue Aug 24 
+	- Perl 5.6.1 support
+	- Fixed height/width calculations that were broken in certain situations.
+	
 

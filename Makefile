@@ -53,11 +53,11 @@ AR_STATIC_ARGS = cr
 DIRFILESEP = /
 NAME = Image::Magick::Thumbnail::Fixed
 NAME_SYM = Image_Magick_Thumbnail_Fixed
-VERSION = 0.01
+VERSION = 0.02
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_01
+VERSION_SYM = 0_02
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.01
+XS_VERSION = 0.02
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -238,7 +238,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Image-Magick-Thumbnail-Fixed
-DISTVNAME = Image-Magick-Thumbnail-Fixed-0.01
+DISTVNAME = Image-Magick-Thumbnail-Fixed-0.02
 
 
 # --- MakeMaker macro section:
@@ -434,7 +434,7 @@ realclean purge ::  clean realclean_subdirs
 metafile :
 	$(NOECHO) $(ECHO) '#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#' > META.yml
 	$(NOECHO) $(ECHO) 'name:         Image-Magick-Thumbnail-Fixed' >> META.yml
-	$(NOECHO) $(ECHO) 'version:      0.01' >> META.yml
+	$(NOECHO) $(ECHO) 'version:      0.02' >> META.yml
 	$(NOECHO) $(ECHO) 'version_from: Fixed.pm' >> META.yml
 	$(NOECHO) $(ECHO) 'installdirs:  site' >> META.yml
 	$(NOECHO) $(ECHO) 'requires:' >> META.yml
@@ -702,7 +702,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd:
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,01,0,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,02,0,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>Perl extension for creating fixed sized thumbnails without distortion.</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>System Administrator &lt;root@nonet&gt;</AUTHOR>' >> $(DISTNAME).ppd
