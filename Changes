@@ -5,5 +5,8 @@ Revision history for Perl extension Image::Magick::Thumbnail::Fixed.
 0.02  Tue Aug 24 
 	- Perl 5.6.1 support
 	- Fixed height/width calculations that were broken in certain situations.
-	
+0.03  Sat Sep 25
+	- Requires 'Image::Magick' ... shouldn't fail anymore during CPAN testing
+	- Will die if Image::Magick can't read a file (for whatever reason)
+	- Debug mode slight more verbose	
 

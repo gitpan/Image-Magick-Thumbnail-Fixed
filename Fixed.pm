@@ -3,10 +3,11 @@ package Image::Magick::Thumbnail::Fixed;
 use 5.6.1;
 use strict;
 use warnings;
-use Image::Magick;
 use Carp;
 
-our $VERSION = '0.02';
+require Image::Magick;
+
+our $VERSION = '0.03';
 
 sub new {
   my $class = shift;  
@@ -77,16 +78,16 @@ sub thumbnail {
   
   eval {
 
-    # open image
-    open(IMAGE,"<$input") or carp "Could not open $input: $!" and return undef;
-    $im->Read(file=>\*IMAGE);
-    close(IMAGE);
+  	open(IMAGE,"<$input") or carp "Could not open $input: $!" and return undef;
+  	my $err = $im->Read(file=>\*IMAGE);
+  	die $err if $err;
+	  close(IMAGE);
 
     # source image dimensions  
     my ($o_width, $o_height) = $im->Get('width','height');
   
-  	#warn "Source dimensions: $o_width x $o_height.\n" if $self->{debug} == 1;
-  
+  	warn "Source  : $o_width x $o_height\n" if $self->{debug} == 1;
+   
     warn "Source image height <= 0 ($o_height)." and return undef if $o_height <= 0;
     warn "Source image width <= 0 ($o_width)." and return undef if $o_width  <= 0;
     
@@ -149,7 +150,7 @@ sub thumbnail {
     }
   };
   if( $@ ){
-    warn "Eval errors: " . $@ and return undef;
+    warn $@ and return undef;
   }
   return 1;
 }
@@ -267,7 +268,8 @@ None by default.
 
 Version 0.01 (18 August 2004): Initial Revision
 Version 0.02 (31 August 2004): Perl 5.6.1 support, fixed height/width calculations that were broken in certain situations.
-
+Version 0.03 (25 September 2004): made debug mode more verbose. Caught additional errors.
+ 
 =head1 SEE ALSO
 
 L<Image::Magick>,
