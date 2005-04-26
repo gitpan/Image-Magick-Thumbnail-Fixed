@@ -7,7 +7,7 @@ use Carp;
 
 require Image::Magick;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub new {
   my $class = shift;  
@@ -86,7 +86,7 @@ sub thumbnail {
     # source image dimensions  
     my ($o_width, $o_height) = $im->Get('width','height');
   
-  	warn "Source  : $o_width x $o_height\n" if $self->{debug} == 1;
+  	warn "Source  : $o_width x $o_height\n" if $self->{debug};
    
     warn "Source image height <= 0 ($o_height)." and return undef if $o_height <= 0;
     warn "Source image width <= 0 ($o_width)." and return undef if $o_width  <= 0;
@@ -117,11 +117,15 @@ sub thumbnail {
         $t_height -= 1;
       }
     }
-    # square
+    # square (fixed suggested by Philip Munt phil@savvyshopper.net.au)
     elsif( $o_width == $o_height){
       $ratio = 1;
       $t_height = $width;
       $t_width  = $width;
+       while (($t_width > $width) or ($t_height > $height)){
+         $t_width -= 1;
+         $t_height -= 1;
+       }
     }
 
     warn "Ratio   : $ratio\n" if $self->{debug};
@@ -267,8 +271,12 @@ None by default.
 =head1 VERSION HISTORY
 
 Version 0.01 (18 August 2004): Initial Revision
+
 Version 0.02 (31 August 2004): Perl 5.6.1 support, fixed height/width calculations that were broken in certain situations.
+
 Version 0.03 (25 September 2004): made debug mode more verbose. Caught additional errors.
+
+Version 0.04 (26 April 2005): Fixed debugging conditional that was too loud - pd <paul@dowling.id.au>, fixed bug with square images - Phillip Munt <phil@savvyshopper.net.au>.
  
 =head1 SEE ALSO
 

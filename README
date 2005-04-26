@@ -1,4 +1,4 @@
-Image/Magick/Thumbnail/Fixed version 0.03
+Image/Magick/Thumbnail/Fixed version 0.01
 =========================================
 
 The README is used to introduce the module and provide instructions on
@@ -25,13 +25,13 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  Image::Magick
+  blah blah blah
 
 COPYRIGHT AND LICENCE
 
 Put the correct copyright and licence information here.
 
-Copyright (C) 2004 Adam Roth (adamjroth@gmail.com)
+Copyright (C) 2004 System Administrator
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
